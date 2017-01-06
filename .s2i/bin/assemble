@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# install phpBB dependencies
+cd /tmp/src/phpBB
+php ../composer.phar install
+
+# move the application source
+mv /tmp/src/phpBB/* $HOME/
+
