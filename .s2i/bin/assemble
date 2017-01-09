@@ -31,3 +31,5 @@ cat << EOF > $HOME/config.php
 @define('PHPBB_ENVIRONMENT', 'production');
 // @define('DEBUG_CONTAINER', true);
 EOF
+
+rm -rf $HOME/install
