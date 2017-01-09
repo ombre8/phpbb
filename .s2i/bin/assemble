@@ -10,4 +10,4 @@ mv /tmp/src/phpBB/* $HOME/
 chmod g+w $HOME/cache
 chmod g+w $HOME/store
 chmod g+w $HOME/files
-chmod g+w $HOME/images/avatars/upload/ directory 
+chmod g+w $HOME/images/avatars/upload/ 
