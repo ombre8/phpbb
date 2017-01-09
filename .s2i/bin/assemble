@@ -7,7 +7,6 @@ php ../composer.phar install
 # move the application source
 mv /tmp/src/phpBB/* $HOME/
 
-chgrp apache $HOME/* -R
 chmod g+w $HOME/cache
 chmod g+w $HOME/store
 chmod g+w $HOME/files
