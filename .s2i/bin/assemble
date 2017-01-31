@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# install phpBB dependencies
+# Get the newest source
+cd /tmp
+git clone http://github.com/phpbb/phpbb src
 cd /tmp/src/phpBB
+if [ -z ${BRANCH+x} ]
+then
+  git checkout $BRANCH
+fi
+
+# install phpBB dependencies
 php ../composer.phar install
 
 # move the application source
