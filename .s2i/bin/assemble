@@ -20,7 +20,7 @@ chmod g+w $HOME/store
 chmod g+w $HOME/files
 chmod g+w $HOME/images/avatars/upload/
 
-if [ -z ${MYSQL_DATABASE}  ]
+if [ -z ${MYSQL_DATABASE+x}  ]
 then
 cat << EOF > $HOME/config.php
 <?php
