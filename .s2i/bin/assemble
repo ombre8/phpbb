@@ -3,7 +3,7 @@
 # Get the newest source
 cd /tmp
 git clone http://github.com/phpbb/phpbb phpBB
-cd /tmp/phpBB
+cd /tmp/phpBB/phpBB
 if [ -z ${BRANCH+x} ]
 then
   git checkout $BRANCH
@@ -13,7 +13,7 @@ fi
 php ../composer.phar install
 
 # move the application source
-mv /tmp/phpBB/* $HOME/
+mv /tmp/phpBB/phpBB/* $HOME/
 
 chmod g+w $HOME/cache
 chmod g+w $HOME/store
