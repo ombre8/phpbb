@@ -21,6 +21,8 @@ chmod g+w $HOME/store
 chmod g+w $HOME/files
 chmod g+w $HOME/images/avatars/upload/
 
+if [ -z ${MYSQL_DATABASE}  ]
+then
 cat << EOF > $HOME/config.php
 <?php
 // phpBB 3.2.x auto-generated configuration file
@@ -42,3 +44,4 @@ cat << EOF > $HOME/config.php
 EOF
 
 rm -rf $HOME/install
+fi
