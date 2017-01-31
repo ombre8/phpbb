@@ -1,15 +1,7 @@
 #!/bin/bash
 
-# Get the newest source
-cd /tmp/
-git clone https://github.com/phpbb/phpbb src
-cd /tmp/src/phpBB
-if [ -z ${BRANCH+x} ]
-  then
-  git checkout $BRANCH
-fi
-
 # install phpBB dependencies
+cd /tmp/src/phpBB
 php ../composer.phar install
 
 # move the application source
@@ -19,4 +11,26 @@ chgrp apache $HOME/* -R
 chmod g+w $HOME/cache
 chmod g+w $HOME/store
 chmod g+w $HOME/files
-chmod g+w $HOME/images/avatars/upload/ directory
+chmod g+w $HOME/images/avatars/upload/
+
+cat << EOF > $HOME/config.php
+<?php
+// phpBB 3.2.x auto-generated configuration file
+// Do not change anything in this file!
+\$dbms = 'phpbb\\\\db\\\\driver\\\\mysqli';
+\$dbhost = '$MYSQL_SERVICE_HOST';
+\$dbport = '$MYSQL_SERVICE_PORT';
+\$dbname = '$MYSQL_DATABASE';
+\$dbuser = '$MYSQL_USER';
+\$dbpasswd = '$MYSQL_PASSWORD';
+\$table_prefix = 'phpbb_';
+\$phpbb_adm_relative_path = 'adm/';
+\$acm_type = 'phpbb\\\\cache\\\\driver\\\\file';
+
+@define('PHPBB_INSTALLED', true);
+// @define('PHPBB_DISPLAY_LOAD_TIME', true);
+@define('PHPBB_ENVIRONMENT', 'production');
+// @define('DEBUG_CONTAINER', true);
+EOF
+
+rm -rf $HOME/install
