@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# install phpBB dependencies
+# Get the newest source
+cd /tmp/
+git clone https://github.com/phpbb/phpbb src
 cd /tmp/src/phpBB
+if [ -z ${BRANCH+x} ]
+  then
+  git checkout $BRANCH
+fi
+
+# install phpBB dependencies
 php ../composer.phar install
 
 # move the application source
@@ -11,4 +19,4 @@ chgrp apache $HOME/* -R
 chmod g+w $HOME/cache
 chmod g+w $HOME/store
 chmod g+w $HOME/files
-chmod g+w $HOME/images/avatars/upload/ directory 
+chmod g+w $HOME/images/avatars/upload/ directory
